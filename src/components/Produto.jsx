@@ -1,5 +1,19 @@
 import React from "react";
 
+import dellLogo from "../assets/dell.png";
+import hpLogo from "../assets/hp.png";
+import kingstonLogo from "../assets/kingston.png";
+import logitechLogo from "../assets/logitech.png";
+import razerLogo from "../assets/razer.png";
+
+const logos = {
+  dell: dellLogo,
+  hp: hpLogo,
+  kingston: kingstonLogo,
+  logitech: logitechLogo,
+  razer: razerLogo,
+};
+
 export default function Produto({ produto }) {
   return (
     <div
@@ -22,12 +36,13 @@ export default function Produto({ produto }) {
     >
       {/* Marca */}
       <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-        <img
-          src={`https://logo.clearbit.com/${produto.marca.toLowerCase()}.com`}
-          alt={produto.marca}
-          style={{ width: "80px", height: "80px", objectFit: "contain" }}
-          onError={(e) => (e.currentTarget.style.display = "none")}
-        />
+        {logos[produto.marca.toLowerCase()] && (
+          <img
+            src={logos[produto.marca.toLowerCase()]}
+            alt={produto.marca}
+            style={{ width: "80px", height: "80px", objectFit: "contain" }}
+          />
+        )}
       </div>
 
       {/* Nome */}
